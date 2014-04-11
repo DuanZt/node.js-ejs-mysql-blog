@@ -1,0 +1,12 @@
+<% include header %>
+<% include alert %>
+<% if(post){ %>
+  <h1>修改记录</h1>
+            <h2><a href="/u/<%= post.username %>"><%= post.username %></a> 说</h2>
+            <p><small><%= post.time %></small></p>
+<form class="form-horizontal" style="text-align: center;" method="post" action="/update/<%= post.time %>">
+      <textarea class="form-control" rows="5" id="post" placeholder="修改" name="post"><%= post.post %></textarea>
+      <button type="submit" class="btn btn-default">修改</button>
+</form>
+<% } %>
+<% include footer %>

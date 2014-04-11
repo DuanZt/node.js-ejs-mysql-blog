@@ -1,0 +1,16 @@
+<div class="container">
+   <div class="row">
+<% posts.forEach(function(post) { %>
+        <div class="col-md-4">
+            <h2><a href="/u/<%= post.username %>"><%= post.username %></a> 说</h2>
+            <p><small><%= post.time %></small></p>
+            <p><%= post.post %></p>
+            <% if(user && user.username == post.username){ %>
+            <a href="/delete/<%= post.time %>">删除</a>
+            <a href="/update/<%= post.time %>">修改</a>
+            <% } %>
+        </div>
+<% }); %>
+   </div>
+</div>
+

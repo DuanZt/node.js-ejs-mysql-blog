@@ -1,0 +1,28 @@
+<% include header %>
+<% include alert %>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<% if(!user) { %>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>欢迎来到 Microblog</h1>
+        <p>Microblog 是一个基于 Node.js 的微博系统。</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+<% } %>
+    <div class="container">
+      <!-- Example row of columns -->
+
+
+      <% include search %>
+      <% include posts %>
+
+
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
+    </div> <!-- /container -->
+<% include footer %>
