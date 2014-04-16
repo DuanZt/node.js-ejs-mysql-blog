@@ -35,7 +35,9 @@ handleError();
 
 module.exports = function(app) {
 	app.get('/', function(req, res){
-        conn.query('select * from post',function(err,posts){
+        //判断是否是第一页，并把请求的页数转换成 number 类型
+        var page = req.query.p ? parseInt(req.query.p) : 1;
+        conn.query('select * from post limit '+((page-1)*6)+','+'6',function(err,posts){
             if(err){
                 req.flash('error','error!');
                 res.redirect('/');
@@ -43,6 +45,7 @@ module.exports = function(app) {
             res.render('index',{
                 title: '首页',
                 posts: posts,
+                page: page,
                 error: req.flash('error'),
                 success: req.flash('success')
             });
@@ -58,7 +61,9 @@ module.exports = function(app) {
 	});
 
 	app.get('/u/:user', function(req, res){
-        conn.query('select * from post where username = '+req.params.user,function(err,posts){
+         //判断是否是第一页，并把请求的页数转换成 number 类型
+        var page = req.query.p ? parseInt(req.query.p) : 1;
+        conn.query('select * from post where username = '+req.params.user+' limit '+((page-1)*6)+','+'6',function(err,posts){
             if(err){
                 req.flash('error', 'error!');
                 res.redirect('/');
@@ -67,6 +72,7 @@ module.exports = function(app) {
             res.render('user',{
                 title: req.params.user,
                 posts: posts,
+                page: page,
                 error: req.flash('error'),
                 success: req.flash('success')
             });
