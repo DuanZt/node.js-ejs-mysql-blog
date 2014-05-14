@@ -1,4 +1,4 @@
-node.js-ejs-mysql-blog
+node.js-express-ejs-mysql-blog
 ======================
 
-node.js-ejs-mysql-blog
+node.js-express-ejs-mysql-blog
